@@ -24,7 +24,7 @@ function getAddForm(req, res) {
 
 async function formPost(req, res) {
   if (req.params.type == "category") {
-    const categoryName = req.params.categoryName;
+    const categoryName = req.body.categoryName;
     await db.addCategory(categoryName);
     res.redirect("/");
   } else if (req.params.type == "item") {

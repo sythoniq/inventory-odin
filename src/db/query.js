@@ -5,7 +5,6 @@ async function getAllCategories() {
     const { rows }= await pool.query(`
 SELECT * FROM Categories; 
 `)
-    console.log(rows);
     return rows;
   } catch (err) {
     console.log(err);
@@ -14,7 +13,7 @@ SELECT * FROM Categories;
 
 async function addCategory(name) {
   try {
-    await pool.query(`INSERT INTO Categories (categoryname) VALUES ($1)`, [name])
+    await pool.query(`INSERT INTO categories (categoryname) VALUES ($1)`, [name])
   } catch (err) {
     console.log(err);
   }
