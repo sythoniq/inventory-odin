@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%=title%></title>
+  </head>
+  <body>
+    <% if (locals.type == "category") { %>
+    <form action="/new/<%= type %>" method="post">
+      <label for="category-name"></label>
+      <input type="text" id="category-name" name="categoryName"
+        placeholder="Category" />
+      <button class="submit-btn">Add Category</button>
+    </form>
+    <% } %>
+    <% if (locals.type == "item") { %> 
+    <form action="/new/<%= type %>" method="post">
+      <label for="item-name"></label>
+      <input type="text" id="item-name" name="itemName" placeholder="Item" />
+      <button class="submit-btn">Add Item</button>
+    </form>
+    <% } %>
+  </body>
+</html>

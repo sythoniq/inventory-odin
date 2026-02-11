@@ -2,30 +2,33 @@ require('dotenv').config()
 const { Client } = require("pg")
 
 const SQL = `
-    CREATE TABLE IF NOT EXIST Categories (
-        categoryName varchar(255) PRIMARY KEY
-    );
-    CREATE TABLE IF NOT EXIST Items(
-        itemId INTEGER PRIMARY KEY,
-        itemName varchar(255),
-        itemQuantity INTEGET,
-        FOREIGN KEY(categoryName) REFERENCES Categories(categoryName)
-    );
+CREATE TABLE IF NOT EXISTS categories (
+categoryname varchar(255) PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS Items(
+itemId integer PRIMARY KEY,
+itemName varchar(255),
+itemQuantity integer,
+category varchar(255) REFERENCES categories(categoryname)
+);
+
+INSERT INTO categories (categoryname) VALUES ('Manga'), ('Manhwa');
 `
 
 async function main() {
-    const client = new Client({
-        connectionString: process.env.DB_STRING,
-        ssl: true
-    })
+  const client = new Client({
+    connectionString: process.env.DB_STRING,
+    ssl: true 
+  })
 
-    try {
-        client.connect()
-        client.query(SQL)
-        client.end()
-    } catch (err) {
-        console.log("Error: ", err.msg)
-    }
+  try {
+    await client.connect()
+    await client.query(SQL)
+    await client.end()
+  } catch (err) {
+    console.log("Error: ", err)
+  }
 }
 
 main();

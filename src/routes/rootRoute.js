@@ -1,7 +1,10 @@
 const { Router } = require("express");
 const index = Router()
-const controllers = require('../controllers/rootControllers')
+const controller = require('../controllers/rootControllers')
 
-index.get("/", controllers.getAllCategories);
+index.get("/", controller.getAllCategories);
+index.get("/new/:type", controller.getAddForm)
+
+index.post("/new/:type", controller.formPost)
 
 module.exports = index;

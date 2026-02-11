@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <main class="main-content">
+      <h3><%= title %></h3>
+      <% if (locals.categories) { %>
+      <ul>
+        <% categories.forEach((category) => { %> 
+          <li><%= category.categoryname %></li>
+        <%})%>
+      </ul>  
+    <%}%>
+      <a href='/new/category'>Add New Category</a>
+    </main>
+  </body>
+</html>

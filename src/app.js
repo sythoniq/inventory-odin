@@ -11,3 +11,7 @@ app.use(express.static(assetsPath))
 
 app.use(express.urlencoded({extended:true}));
 app.use("/", index);
+
+app.listen(3000, () => {
+  console.log("Server do be running on 3000")
+})
