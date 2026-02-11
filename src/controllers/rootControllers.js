@@ -1,4 +1,10 @@
 const db = require("../db/query")
+const { body, validationResult, matchedData } = require("express-validator")
+
+const formValidation = [
+ body("categoryName").trim()
+  .isLength({min: 4, max: 200}).withMessage("Category name too short").escape(),
+]
 
 const getAllCategories = async (req, res) => {
   const result = await db.getAllCategories();
@@ -22,15 +28,27 @@ function getAddForm(req, res) {
   }
 }
 
-async function formPost(req, res) {
-  if (req.params.type == "category") {
-    const categoryName = req.body.categoryName;
-    await db.addCategory(categoryName);
-    res.redirect("/");
-  } else if (req.params.type == "item") {
+const formPost = [
+  formValidation, 
+  async (req, res) => {
+    if (req.params.type == "category") {
+      const result = validationResult(req);
+      if (!result.isEmpty()) {
+        return res.status(400).render("new", {
+          title: "Input Error",
+          errors: result.array(),
+          type: "category"
+        })
+      }
+      const {categoryName} = matchedData(req);
+      await db.addCategory(categoryName);
+      res.redirect("/");
+    } else if (req.params.type == "item") {
+
+    }
 
   }
-}
+]
 
 module.exports = {
   getAllCategories,

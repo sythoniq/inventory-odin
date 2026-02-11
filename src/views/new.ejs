@@ -4,6 +4,7 @@
     <title><%=title%></title>
   </head>
   <body>
+    <%- include("partials/errors.ejs") %>
     <% if (locals.type == "category") { %>
     <form action="/new/<%= type %>" method="post">
       <label for="category-name"></label>
