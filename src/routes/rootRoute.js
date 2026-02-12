@@ -1,10 +1,15 @@
 const { Router } = require("express");
 const index = Router()
-const controller = require('../controllers/rootControllers')
 
-index.get("/", controller.getAllCategories);
-index.get("/new/:type", controller.getAddForm)
+const categories = require("../controllers/categoriesController")
+const items = require("../controllers/itemsController")
 
-index.post("/new/:type", controller.formPost)
+index.get("/", categories.getAllCategories);
+index.get("/:category", categories.getCategoryItems);
+index.get("/delete/:category", categories.deleteCategory);
+
+index.get("/category/new", categories.getCategoryForm);
+index.post("/category/new", categories.addCategory)
+
 
 module.exports = index;
