@@ -6,7 +6,7 @@
   <body>
     <%- include("partials/errors.ejs") %>
     <% if (locals.type == "category") { %>
-    <form action="/new/<%= type %>" method="post">
+    <form action="/<%= type %>/new" method="post">
       <label for="category-name"></label>
       <input type="text" id="category-name" name="categoryName"
         placeholder="Category" />

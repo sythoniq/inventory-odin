@@ -34,15 +34,33 @@ const addCategory = [
 ]
 
 const deleteCategory = async (req, res) => {
-
+  const tgt = req.params.category;
+  try {
+  await db.deleteCategory(tgt);
+  res.redirect("/")
+  } catch (err) {
+    console.log("Category Deletion Error", err.msg);
+  }
 }
 
 const getCategoryItems = async (req, res) => {
-
+  const tgt = req.params.category;
+  try {
+    const result = await db.fetchFromCategory(tgt);
+    res.render("items", {
+      title: tgt.toUpperCase(),
+      items: result
+    })
+  } catch (err) {
+    console.log("Error rendering category items", err.msg)
+  }
 }
 
 const getCategoryForm = (req, res) => {
-
+  res.render("new", {
+    title: "Add new category",
+    type: "category"
+  })
 }
 
 module.exports = {

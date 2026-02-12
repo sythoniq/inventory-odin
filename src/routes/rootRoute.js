@@ -5,7 +5,7 @@ const categories = require("../controllers/categoriesController")
 const items = require("../controllers/itemsController")
 
 index.get("/", categories.getAllCategories);
-index.get("/:category", categories.getCategoryItems);
+//index.get("/:category", categories.getCategoryItems);
 index.get("/delete/:category", categories.deleteCategory);
 
 index.get("/category/new", categories.getCategoryForm);
