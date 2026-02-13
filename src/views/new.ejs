@@ -14,9 +14,12 @@
     </form>
     <% } %>
     <% if (locals.type == "item") { %> 
-    <form action="/new/<%= type %>" method="post">
+    <form action="/<%= type %>/new/<%= category %>" method="post">
       <label for="item-name"></label>
       <input type="text" id="item-name" name="itemName" placeholder="Item" />
+      <label for="item-quantity"></label>
+      <input type="number" id="item-quantity" name="itemQuantity" placeholder="10"
+        />
       <button class="submit-btn">Add Item</button>
     </form>
     <% } %>

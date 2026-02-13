@@ -35,10 +35,20 @@ async function fetchFromCategory(name) {
   }
 }
 
+async function addItem(item) {
+  const {name, quantity, category} = item;
+  try {
+    await pool.query(`INSERT INTO items VALUES ($1) ($2) WHERE category=($3)`,
+      [name, quantity]);
+  }catch (err) {
+    console.log("Item add db fail ", err)
+  }
+}
 
 module.exports = {
   getAllCategories,
   addCategory,
   deleteCategory,
-  fetchFromCategory
+  fetchFromCategory,
+  addItem
 }

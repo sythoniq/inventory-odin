@@ -4,16 +4,16 @@
     <title><%= title %></title>
   </head>
   <body>
-    <main class="main-content">
+    <main class="category-content">
       <h3><%= title %></h3>
       <% if (locals.categories) { %>
-      <ul>
+      <div className="category-list">
         <% categories.forEach((category) => { %> 
-          <li><%= category.categoryname %></li>
-          <a href="/delete/<%= category.categoryname %>">Delete</a>
+        <a class="categoryName" href="/<%= category.categoryname %>"><%= category.categoryname %></a>
+        <a href="/delete/<%= category.categoryname %>">Delete</a>
         <%})%>
-      </ul>  
-    <%}%>
+      </div>  
+      <%}%>
       <a href='/category/new'>Add New Category</a>
     </main>
   </body>

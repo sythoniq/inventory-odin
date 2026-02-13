@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> <%= title.toLowerCase() %> </title>
+  </head>
+  <body>
+    <% if (locals.items) { %>
+      <main class="items-content">
+      <h2><%= title %></h2>
+      <% items.forEach((item) => { %>
+        <div class="itemCard">
+          <h3><%= item.itemName %></h3>
+          <p><%= item.itemQuantity %></p>
+
+          <div class="item-options">
+            <a href="/edit/<%= item.itemId %>">Edit</a>
+            <a href="/delete/<%= item.itemId %>">Delete</a>
+          </div>
+        </div>
+      <% }) %>
+      </main>
+    <% } %>
+    <a href="/item/new/<%= title %>">Add New Item</a>
+  </body>
+</html>
