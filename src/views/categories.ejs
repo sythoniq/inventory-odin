@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Categories</title>
+  </head>
+  <body>
+    <% if (locals.categories) { %>
+    <main class="categories-content">
+      <ul>
+        <% categories.forEach((category) => { %>
+        <a href="/<%= category.categoryname %>">
+          <div class="category-btn">
+            <h2><%= category.categoryname %></h2>
+          </div>
+        </a>
+        <%})%>
+      </ul>
+    </main>
+    <% } %>
+  </body>
+</html>
