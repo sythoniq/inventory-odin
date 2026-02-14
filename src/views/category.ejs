@@ -16,7 +16,7 @@
               <a href="/">
                 <button>Edit</button>
               </a>
-              <a href="/">
+              <a href="/items/delete/<%= item.itemid %>">
                 <button>Delete</button>
               </a>
             </div>
@@ -24,6 +24,9 @@
         <%})%>
       </main>
     <%}%>
+    <a href="/items/new">
+      <button>Add Item</button>
+    </a>
 
     <a href="/categories">
       <button>Back</button>

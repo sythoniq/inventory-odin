@@ -37,9 +37,29 @@ async function addToCategory(category) {
   }
 }
 
+async function addItem(item) {
+  const {itemName, itemQuantity, category} = item;
+  try {
+    await pool.query(`INSERT INTO items (itemname, itemquantity, category)
+VALUES ($1, $2, $3)`, [itemName, itemQuantity, category]);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function deleteItem(itemId) {
+  try {
+    await pool.query(`DELETE FROM items WHERE itemId = ($1)`, [itemId]);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   getAllCategories,
   getAllItems,
   getCategoryItems,
-  addToCategory
+  addToCategory,
+  addItem,
+  deleteItem
 }
