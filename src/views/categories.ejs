@@ -8,13 +8,22 @@
     <main class="categories-content">
       <ul>
         <% categories.forEach((category) => { %>
-        <a href="/<%= category.categoryname %>">
+        <a href="/categories/<%= category.categoryname %>">
           <div class="category-btn">
             <h2><%= category.categoryname %></h2>
           </div>
         </a>
+        <a href="/categories/delete/<%= category.categoryname %>">
+          <div class="delete-category">
+            <button>Delete</button>
+          </div>
+        </a>
         <%})%>
       </ul>
+
+      <a href="/categories/add">
+        <button class="add-category">Add Category</button>
+      </a>
     </main>
     <% } %>
   </body>

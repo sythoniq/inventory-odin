@@ -1,1 +1,17 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h2>Add A Category</h2>
+    <%- include("partials/errors.ejs") %>
+    <form method="post" action="/categories/add">
+      <label for="category-name"></label>
+      <input type="text" id="category-name" name="categoryName"
+        placeholder="Test Category" />
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

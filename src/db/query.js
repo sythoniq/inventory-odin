@@ -11,7 +11,28 @@ async function getAllCategories() {
 
 async function getAllItems() {}
 
+async function getCategoryItems(category) {
+  try {
+    const { rows } = await pool.query(`SELECT * FROM items WHERE category=($1)`,
+    [category]);
+    return rows;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function addToCategory(category) {
+  try {
+    await pool.query(`INSERT INTO categories (categoryname) VALUES ($1)`,
+      [category]);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   getAllCategories,
-  getAllItems
+  getAllItems,
+  getCategoryItems,
+  addToCategory
 }
