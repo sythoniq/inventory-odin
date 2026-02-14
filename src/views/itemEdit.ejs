@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <form action="/items/edit/<%= item.itemid %>" method="post">
+      <label for="item-name"></label>
+      <input type="text" value="<%= item.itemname %>" name="itemName"
+        id="item-name" />
+      <label for="item-quantity"></label>
+      <input type="number" value="<%= item.itemquantity %>" name="itemQuantity"
+        id="item-quantity" />
+      <select name="category" id="select-cateogries">
+        <% categories.forEach((category) => { %>
+          <option value="<%= category.categoryname %>"><%=category.categoryname%></option>
+        <% }) %>
+      </select> 
+      <button type="submit">Confirm</button>
+    </form>
+  </body>
+</html>

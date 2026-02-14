@@ -53,9 +53,24 @@ async function deleteItem(req, res) {
   }
 }
 
+async function editItem(req, res) {
+  try {
+    const categories = await db.getAllCategories();
+    const item = await db.getItem(req.params.id);
+    res.render("itemEdit", {
+      title: "Edit Item",
+      categories: categories,
+      item: item[0]
+    })
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 module.exports = {
   getAllItems,
   addItem,
   getItemForm,
-  deleteItem
+  deleteItem,
+  editItem
 }

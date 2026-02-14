@@ -37,6 +37,16 @@ async function addToCategory(category) {
   }
 }
 
+async function getItem(id) {
+  try {
+    const { rows } = await pool.query("SELECT * FROM items WHERE itemId = ($1)",
+    [id]);
+    return rows;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 async function addItem(item) {
   const {itemName, itemQuantity, category} = item;
   try {
@@ -61,5 +71,6 @@ module.exports = {
   getCategoryItems,
   addToCategory,
   addItem,
-  deleteItem
+  deleteItem,
+  getItem
 }

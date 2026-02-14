@@ -8,5 +8,6 @@ items.get("/new", controller.getItemForm);
 items.post("/new", controller.addItem)
 
 items.get("/delete/:id", controller.deleteItem)
+items.get("/edit/:id", controller.editItem)
 
 module.exports = items;
