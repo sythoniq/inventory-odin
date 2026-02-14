@@ -1,1 +1,27 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <% if (locals.items) { %>
+    <main class="items-content">
+      <%items.forEach((item) => { %>
+      <div class='item-card'>
+        <h2><%= item.itemname %></h2>
+        <p><%= item.itemquantity %></p>
+        <div class="item-card-options">
+          <a href="/">
+            <button>Edit</button>
+          </a>
+          <a href="/">
+            <button>Delete</button>
+          </a>
+        </div>
+        <p><%= item.category %></p>
+      </div>
+      <%})%>
+    </main>
+    <%}%>
+  </body>
+</html>

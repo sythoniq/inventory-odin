@@ -9,7 +9,14 @@ async function getAllCategories() {
   }
 }
 
-async function getAllItems() {}
+async function getAllItems() {
+  try {
+  const { rows } = await pool.query (`SELECT * FROM items`);
+  return rows;
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 async function getCategoryItems(category) {
   try {

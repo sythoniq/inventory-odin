@@ -1,8 +1,8 @@
 const { Router } = require("express");
 const items = Router();
 
-items.get("/items", (req, res) => {
-  console.log("WIP");
-})
+const controller = require('../controllers/itemsController')
+
+items.get("/", controller.getAllItems);
 
 module.exports = items;
