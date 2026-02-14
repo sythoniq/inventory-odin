@@ -44,11 +44,11 @@ const deleteCategory = async (req, res) => {
 }
 
 const getCategoryItems = async (req, res) => {
-  const tgt = req.params.category;
+  const tgt = db.fixString(req.params.category);
   try {
     const result = await db.fetchFromCategory(tgt);
     res.render("items", {
-      title: tgt.toUpperCase(),
+      title: tgt,
       items: result
     })
   } catch (err) {

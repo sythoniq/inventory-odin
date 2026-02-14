@@ -1,5 +1,9 @@
 const pool = require("./pool")
 
+function fixString(str) {
+  return String(str).toLowerCase().charAt(0).toUpperCase() + String(str).slice(1);
+}
+
 // Category db queries
 async function getAllCategories() {
   try {
@@ -36,10 +40,13 @@ async function fetchFromCategory(name) {
 }
 
 async function addItem(item) {
-  const {name, quantity, category} = item;
+  const {itemName, itemQuantity, category} = item;
+  console.log("Name: ", typeof(itemName), itemName);
+  console.log("Quantity: ", typeof(itemQuantity), itemQuantity)
+  console.log("Category", typeof(category), category)
   try {
-    await pool.query(`INSERT INTO items VALUES ($1) ($2) WHERE category=($3)`,
-      [name, quantity]);
+    await pool.query(`INSERT INTO items (itemName, itemQuantity, category) VALUES ($1, $2, $3)`, 
+      [itemName, Number(itemQuantity), fixString(category)])
   }catch (err) {
     console.log("Item add db fail ", err)
   }
@@ -50,5 +57,6 @@ module.exports = {
   addCategory,
   deleteCategory,
   fetchFromCategory,
-  addItem
+  addItem,
+  fixString
 }

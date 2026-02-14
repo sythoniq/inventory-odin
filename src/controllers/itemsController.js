@@ -9,7 +9,6 @@ const validateItem = [
 ]
 
 const getItemForm = (req, res) => {
-  console.log(req);
   res.render("new", {
     title: "Add Item",
     type: "item",
@@ -28,7 +27,7 @@ const addItem = [
         type: "item"
       })
     }
-    const category = req.params.category
+    const category = req.params.category.toLowerCase();
     const {itemName, itemQuantity} = matchedData(req);
     
     await db.addItem({itemName, itemQuantity, category});

@@ -8,9 +8,10 @@
       <main class="items-content">
       <h2><%= title %></h2>
       <% items.forEach((item) => { %>
+        <%- console.log(item) %>
         <div class="itemCard">
-          <h3><%= item.itemName %></h3>
-          <p><%= item.itemQuantity %></p>
+          <h3>Name: <%= item.itemname %></h3>
+          <p>Quantity: <%= item.itemquantity %></p>
 
           <div class="item-options">
             <a href="/edit/<%= item.itemId %>">Edit</a>
