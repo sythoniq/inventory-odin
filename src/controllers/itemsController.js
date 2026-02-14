@@ -67,10 +67,28 @@ async function editItem(req, res) {
   }
 }
 
+const postEditItem = [
+  validateItem,
+  async (req, res) => {
+    const results = validationResult(req);
+    if (!results.isEmpty()) {
+      return res.status(400).render("itemEdit", {
+        title: "Input Error",
+        errors: results.array()
+      })
+    }
+    const {itemName, itemQuantity, category} = matchedData(req);
+    const id = Number(req.params.id);
+    await db.updateItem(id, {itemName, itemQuantity, category});
+    res.redirect(`/categories/${category}`);
+  }
+]
+
 module.exports = {
   getAllItems,
   addItem,
   getItemForm,
   deleteItem,
-  editItem
+  editItem,
+  postEditItem
 }

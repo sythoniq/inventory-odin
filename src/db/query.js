@@ -65,6 +65,17 @@ async function deleteItem(itemId) {
   }
 }
 
+async function updateItem(id, item) {
+  const {itemName, itemQuantity, category} = item;
+
+  try {
+    await pool.query(`UPDATE items SET itemName=($1), itemQuantity=($2),
+category=($3) WHERE itemId=($4)`, [itemName, itemQuantity, category, id]);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   getAllCategories,
   getAllItems,
@@ -72,5 +83,6 @@ module.exports = {
   addToCategory,
   addItem,
   deleteItem,
-  getItem
+  getItem,
+  updateItem
 }

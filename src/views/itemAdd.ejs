@@ -5,6 +5,7 @@
   </head>
   <body>
     <h2><%= title %></h2>
+    <%- include("partials/errors.ejs")%>
     <form action="/items/new" method="post">
       <label for="item-name"></label>
       <input type="text" id="item-name" name="itemName" placeholder="Item Name"

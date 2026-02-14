@@ -4,6 +4,7 @@
     <title><%= title %></title>
   </head>
   <body>
+    <%- include("partials/errors.ejs") %>
     <form action="/items/edit/<%= item.itemid %>" method="post">
       <label for="item-name"></label>
       <input type="text" value="<%= item.itemname %>" name="itemName"

@@ -9,5 +9,6 @@ items.post("/new", controller.addItem)
 
 items.get("/delete/:id", controller.deleteItem)
 items.get("/edit/:id", controller.editItem)
+items.post("/edit/:id", controller.postEditItem);
 
 module.exports = items;
