@@ -1,0 +1,68 @@
+body {
+  background-color: rgba(0, 0, 0, 0.2);
+  font-family: monospace;
+}
+
+.items-content {
+  display: grid;
+  grid-template: auto / 1fr;
+  gap: 1.2em;
+  padding: .8em;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25em;
+}
+
+.item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .2em;
+  padding: .2em;
+  border-radius: 12px;
+  box-shadow: 2px 5px 5px 2px rgba(0, 0, 0, 0.5);
+}
+
+.item-card > h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
+}
+
+.item-details {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  border-radius: 12px;
+  border: .2px solid black;
+  padding: .5em;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: monospace, sans-serif;
+}
+
+button:hover {
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: 800;
+}
+
+h2:hover {
+  cursor: pointer;
+  font-size: 1.6em;
+}
+
+.return-btn {
+  justify-self: center;
+}

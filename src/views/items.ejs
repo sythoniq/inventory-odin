@@ -2,25 +2,33 @@
 <html lang="en">
   <head>
     <title><%= title %></title>
+    <link href="/items.css" rel="stylesheet" />
   </head>
   <body>
     <% if (locals.items) { %>
     <main class="items-content">
-      <%items.forEach((item) => { %>
-      <div class='item-card'>
-        <h2><%= item.itemname %></h2>
-        <p><%= item.itemquantity %></p>
-        <div class="item-card-options">
-          <a href="/items/edit/<%= item.itemid %>">
-            <button>Edit</button>
-          </a>
-          <a href="/items/delete/<%= item.itemid %>">
-            <button>Delete</button>
-          </a>
+      <div class="container">
+        <%items.forEach((item) => { %>
+        <div class='item-card'>
+          <h2><%= item.itemname %></h2>
+          <div class="item-details">
+            <p>Quantity: <%= item.itemquantity %></p>
+            <p>Category: <%= item.category %></p>
+          </div>
+          <div class="item-card-options">
+            <a href="/items/edit/<%= item.itemid %>">
+              <button>Edit</button>
+            </a>
+            <a href="/items/delete/<%= item.itemid %>">
+              <button>Delete</button>
+            </a>
+          </div>
         </div>
-        <p><%= item.category %></p>
+        <%})%>
       </div>
-      <%})%>
+      <a href="/" class="return-btn">
+        <button>Home</button>
+      </a>
     </main>
     <%}%>
   </body>
