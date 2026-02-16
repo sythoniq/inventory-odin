@@ -6,6 +6,7 @@ body {
   font-family: monospace;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 h2 {
@@ -14,8 +15,9 @@ h2 {
 
 .homepage-links {
   display: flex;
-  gap: .5em;
+  gap: 1.5em;
   padding: .75em;
+  align-items: center;
 }
 
 a {

@@ -2,11 +2,13 @@
 <html lang="en">
   <head>
     <title><%= title %></title>
+    <link href="/form.css" rel="stylesheet" />
   </head>
   <body>
     <h2><%= title %></h2>
     <%- include("partials/errors.ejs")%>
-    <form action="/items/new" method="post">
+    <form action="/items/new" method="post" class="item-form">
+      <h2><%= title %></h2>
       <label for="item-name"></label>
       <input type="text" id="item-name" name="itemName" placeholder="Item Name"
         />
@@ -20,5 +22,8 @@
       </select>
       <button type="submit">Add Item</button>
     </form>
+    <a href="/">
+      <button>Home</button>
+    </a>
   </body>
 </html>

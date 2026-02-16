@@ -2,16 +2,21 @@
 <html lang="en">
   <head>
     <title><%= title %></title>
+    <link href="/form.css" rel="stylesheet" />
   </head>
   <body>
     <h2>Add A Category</h2>
     <%- include("partials/errors.ejs") %>
-    <form method="post" action="/categories/add">
+    <form method="post" action="/categories/add" class="category-form">
+      <h2><%= title %></h2>
       <label for="category-name"></label>
       <input type="text" id="category-name" name="categoryName"
         placeholder="Test Category" />
 
       <button type="submit">Submit</button>
     </form>
+    <a href="/categories">
+      <button>Return</button>
+    </a>
   </body>
 </html>

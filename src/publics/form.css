@@ -1,0 +1,30 @@
+body {
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: .5em;
+}
+
+.category-form, .item-form {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  padding: 1.5em;
+  border: .5px solid black;
+  border-radius: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-form > input, button, .item-form > input, select {
+  width: 100%;
+  font-size: 1.5em;
+  font-weight: 600;
+  font-family: monospace, sans-serif;
+  border-radius: 12px;
+  padding: .5em;
+  cursor: pointer;
+}
+
